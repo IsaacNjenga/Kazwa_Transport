@@ -112,15 +112,24 @@ function Navbar() {
                 items={navItems.map(({ key, title, path }) => ({
                   key,
                   label: (
-                    <Link
-                      to={path}
-                      style={{
-                        fontFamily: "Raleway",
-                        color: scrolled ? "#ffffff" : "",
-                        letterSpacing: 1.5,
-                      }}
-                    >
-                      {title.toLocaleUpperCase()}
+                    <Link to={path}>
+                      <p
+                        style={{
+                          fontFamily: "Raleway",
+                          color: scrolled ? "#ffffff" : "",
+                          letterSpacing: 1.5,
+                          transition: "all 0.3s ease",
+                          margin: 0,
+                        }}
+                        onMouseEnter={(e) =>
+                          (e.currentTarget.style.transform = "scale(1.05)")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.currentTarget.style.transform = "scale(1)")
+                        }
+                      >
+                        {title.toLocaleUpperCase()}
+                      </p>
                     </Link>
                   ),
                 }))}
