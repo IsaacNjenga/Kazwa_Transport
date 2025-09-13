@@ -184,7 +184,7 @@ function Navbar() {
         >
           <Outlet />
         </Content>
-        <Footer>
+        <Footer style={{background:'#001529'}}>
           <FooterContent />
         </Footer>
       </Layout>

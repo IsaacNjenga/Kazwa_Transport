@@ -1,5 +1,5 @@
 import logo from "../assets/icons/logo.png";
-import { Typography } from "antd";
+import { Typography, Divider, Space } from "antd";
 import {
   InstagramFilled,
   FacebookFilled,
@@ -10,194 +10,119 @@ import {
 } from "@ant-design/icons";
 import { useUser } from "../contexts/UserContext";
 
-const iconStyle = { fontSize: 30 };
-
-const { Title, Paragraph } = Typography;
+const { Title, Paragraph, Text } = Typography;
 
 function FooterContent() {
   const { isMobile } = useUser();
+
   return (
-    <footer>
+    <footer
+      style={{
+        background: "#001529",
+        color: "#fff",
+        //padding: "40px 20px 10px",
+      }}
+    >
+      {/* Main Footer Content */}
       <div
         style={{
           display: "flex",
-          justifyContent: "space-around",
-          padding: 10,
           flexDirection: isMobile ? "column" : "row",
-          gap: 20,
+          justifyContent: "space-around",
+          alignItems: isMobile ? "flex-start" : "stretch",
+          gap: 30,
         }}
       >
-        <div style={{ textAlign: "center" }}>
+        {/* About */}
+        <div style={{ maxWidth: 350 }}>
           <img
             src={logo}
-            alt="Logo"
-            style={{
-              width: 250,
-              height: 250,
-              borderRadius: "50%",
-              border: "2px solid #dcd8bb",
-              objectFit: "cover",
-              transition: "transform 0.3s ease",
-              cursor: "pointer",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "scale(1.05)")
-            }
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            alt="Kazwa Transport"
+            style={{ width: 120, marginBottom: 0 }}
           />
-        </div>
-        {/* about the company */}
-        <div>
-          <Title
-            level={4}
-            style={{ color: "#dcd8bb", fontFamily: "Alegreya Sans" }}
-          >
-            About Sekani
-          </Title>
-          <Paragraph
-            style={{ maxWidth: 400, color: "#fff", fontFamily: "Raleway" }}
-          >
-            Sekani is a cutting-edge real estate platform dedicated to making
-            property transactions seamless and efficient. Whether you're looking
-            to buy, sell, rent, or invest, Sekani provides the tools and
-            resources you need to make informed decisions in the real estate
-            market.
+          <Title style={{ margin: 0,color:'#ddd' }}>Kazwa Transport</Title>
+          <Paragraph style={{ color: "#ddd", fontFamily: "Raleway" }}>
+            Your trusted partner for heavy vehicle and pickup transportation
+            across the UAE.
           </Paragraph>
-          <div
-            style={{
-              display: "flex",
-              gap: 15,
-              marginTop: 10,
-              justifyContent: "left",
-            }}
-          >
-            {[
-              {
-                icon: <InstagramFilled style={iconStyle} />,
-                label: "Instagram",
-                color: "#fff",
-                link: "https://www.instagram.com/",
-              },
-              {
-                icon: <FacebookFilled style={iconStyle} />,
-                label: "Facebook",
-                color: "#fff",
-                link: "https://www.facebook.com/",
-              },
-              {
-                icon: <XOutlined style={iconStyle} />,
-                label: "Twitter",
-                color: "#fff",
-                link: "https://twitter.com/",
-              },
-            ].map((item, index) => (
-              <div
-                key={index}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 3,
-                  padding: "8px 8px",
-                  borderRadius: 12,
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                  cursor: "pointer",
-                  transition: "all 0.3s ease",
-                  fontWeight: 500,
-                  color: item.color,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 6px 14px rgba(0,0,0,0.15)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow =
-                    "0 2px 8px rgba(0,0,0,0.05)";
-                }}
-              >
-                <a
-                  href={item.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    color: item.color,
-                  }}
-                >
-                  {item.icon}
-                </a>
-              </div>
-            ))}
+
+          {/* Contact Info */}
+          <Space direction="vertical" size="small">
+            <Text style={{ color: "#ddd" }}>
+              <EnvironmentOutlined style={{ marginRight: 8 }} />
+              Dubai, UAE
+            </Text>
+            <Text style={{ color: "#ddd" }}>
+              <PhoneOutlined style={{ marginRight: 8 }} /> +971 50 555 5555
+            </Text>
+            <Text style={{ color: "#ddd" }}>
+              <MailOutlined style={{ marginRight: 8 }} />{" "}
+              info@kazwatransport.com
+            </Text>
+          </Space>
+
+          {/* Social Links */}
+          <div style={{ marginTop: 12 }}>
+            <Space size="middle">
+              <FacebookFilled style={{ fontSize: 24, cursor: "pointer" }} />
+              <InstagramFilled style={{ fontSize: 24, cursor: "pointer" }} />
+              <XOutlined style={{ fontSize: 24, cursor: "pointer" }} />
+            </Space>
           </div>
         </div>
-        {/* contact */}
 
-        <div
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            display: "flex",
-            flexDirection: "column",
-            //width: 300,
-          }}
-        >
-          <Title
-            level={4}
-            style={{ color: "#dcd8bb", fontFamily: "Alegreya Sans" }}
-          >
-            Contact Us
+        {/* Quick Links */}
+        <div>
+          <Title level={4} style={{ color: "#fff", fontFamily: "Raleway" }}>
+            Quick Links
           </Title>
-
-          {[
-            {
-              icon: <EnvironmentOutlined style={{ fontSize: 20 }} />,
-              label: "21 Nairobi, Kenya",
-              color: "#fff",
-            },
-            {
-              icon: <PhoneOutlined style={{ fontSize: 20 }} />,
-              label: "+254 712 345 678",
-              color: "#fff",
-            },
-            {
-              icon: <MailOutlined style={{ fontSize: 20 }} />,
-              label: (
-                <a
-                  href="mailto:info@sekani.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ textDecoration: "none", color: "#fff" }}
-                >
-                  info@sekani.com
-                </a>
-              ),
-              color: "#fff",
-            },
-          ].map((item, index) => (
-            <div
-              key={index}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                marginBottom: 12,
-                color: item.color,
-              }}
-            >
-              <span
-                style={{
-                  borderRadius: "50%",
-                  border: "1px solid #fff",
-                  padding: 6,
-                }}
-              >
-                {item.icon}
-              </span>
-              <span style={{ fontFamily: "Raleway" }}>{item.label}</span>
-            </div>
-          ))}
+          <Space direction="vertical" size="small">
+            <Text style={{ cursor: "pointer", color: "#ddd" }}>Home</Text>
+            <Text style={{ cursor: "pointer", color: "#ddd" }}>About Us</Text>
+            <Text style={{ cursor: "pointer", color: "#ddd" }}>Services</Text>
+            <Text style={{ cursor: "pointer", color: "#ddd" }}>Contact Us</Text>
+            <Text style={{ cursor: "pointer", color: "#ddd" }}>
+              Get Quotation
+            </Text>
+          </Space>
         </div>
+
+        {/* Services */}
+        <div>
+          <Title level={4} style={{ color: "#fff", fontFamily: "Raleway" }}>
+            Our Services
+          </Title>
+          <Space direction="vertical" size="small">
+            <Text style={{ color: "#ddd" }}>Construction Transport</Text>
+            <Text style={{ color: "#ddd" }}>Commercial Goods Transport</Text>
+            <Text style={{ color: "#ddd" }}>Businesses Transport</Text>
+            <Text style={{ color: "#ddd" }}>3PL Logistics Services</Text>
+          </Space>
+        </div>
+
+        {/* Legal */}
+        <div>
+          <Title level={4} style={{ color: "#fff", fontFamily: "Raleway" }}>
+            Legal
+          </Title>
+          <Space direction="vertical" size="small">
+            <Text style={{ color: "#ddd" }}>Terms & Conditions</Text>
+            <Text style={{ color: "#ddd" }}>Privacy Policy</Text>
+            <Text style={{ color: "#ddd" }}>Cookie Policy</Text>
+            <Text style={{ color: "#ddd" }}>Sitemap</Text>
+          </Space>
+        </div>
+      </div>
+
+      {/* Divider */}
+      <Divider
+        style={{ borderColor: "rgba(255, 255, 255, 0)", margin: "20px 0" }}
+      />
+
+      {/* Bottom Bar */}
+      <div style={{ textAlign: "center", color: "#888", fontSize: 14 }}>
+        © {new Date().getFullYear()} UAE Heavy Transport. All Rights Reserved. A
+        Sea Prince Logistics Group of Companies.
       </div>
     </footer>
   );

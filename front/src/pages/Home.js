@@ -1,14 +1,31 @@
 import Motion from "../components/Motion";
-import { Card, Col, Divider, Image, Row, Typography } from "antd";
+import {
+  Button,
+  Card,
+  Carousel,
+  Col,
+  Divider,
+  Image,
+  Row,
+  Space,
+  Typography,
+} from "antd";
 import { useUser } from "../contexts/UserContext";
 import {
   AppstoreOutlined,
   BankFilled,
   BankOutlined,
   CheckCircleOutlined,
+  FormOutlined,
   GlobalOutlined,
   HomeFilled,
   InfoCircleOutlined,
+  MailFilled,
+  MailOutlined,
+  MessageFilled,
+  MessageOutlined,
+  PhoneFilled,
+  PhoneOutlined,
   ProductFilled,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
@@ -18,6 +35,14 @@ const { Title, Text, Paragraph } = Typography;
 
 const bannerImg =
   "https://plus.unsplash.com/premium_photo-1682144324433-ae1ee89a0238?w=900";
+const bannerImg2 =
+  "https://plus.unsplash.com/premium_photo-1661963219843-f1a50a6cfcd3?w=900";
+const bannerImg3 =
+  "https://images.unsplash.com/photo-1707555235858-feea68bb1cc5?w=900";
+const bannerImg4 =
+  "https://plus.unsplash.com/premium_photo-1661935334659-a4f95e515c3b?w=900";
+
+const bannerImages = [bannerImg, bannerImg2, bannerImg3, bannerImg4];
 
 const aboutImg =
   "https://images.unsplash.com/photo-1616432043562-3671ea2e5242?w=900";
@@ -103,14 +128,18 @@ function Home() {
     <Motion>
       {/* banner */}
       <div style={{ position: "relative" }}>
-        <Image
-          src={bannerImg}
-          alt="bgImg"
-          width="100%"
-          height={isMobile ? 600 : 700}
-          preview={false}
-          style={{ objectFit: "cover", maxWidth: "100%" }}
-        />
+        <Carousel autoplay autoplaySpeed={4800} dots={false} effect="scrollx">
+          {bannerImages.map((img) => (
+            <Image
+              src={img}
+              alt="bgImg"
+              width="100%"
+              height={isMobile ? 500 : 800}
+              preview={false}
+              style={{ objectFit: "cover", maxWidth: "100%" }}
+            />
+          ))}
+        </Carousel>
         <div style={bannerDiv}>
           <div
             style={{
@@ -152,7 +181,7 @@ function Home() {
       </div>
 
       {/* services */}
-      <div style={{ marginBottom: 50, padding: 10 }}>
+      <div style={{ marginBottom: 20, padding: 10 }}>
         <Title style={{ textAlign: "center", fontFamily: "Raleway" }}>
           OUR SERVICES
         </Title>
@@ -213,14 +242,13 @@ function Home() {
                   >
                     <Text type="secondary">{card.text}</Text>
                   </div>
-                  <div
-                    style={{ position: "absolute", bottom: 10, marginTop: 0 }}
-                  >
+                  <div style={{ position: "absolute", bottom: 10 }}>
                     <Link to="/quotation">
                       <p
                         style={{
                           fontWeight: "bold",
                           transition: "all 0.3s ease",
+                          marginTop: 10,
                         }}
                         onMouseEnter={(e) =>
                           (e.currentTarget.style.transform = "scale(1.05)")
@@ -397,6 +425,159 @@ function Home() {
               }}
             />
           </div>
+        </div>
+      </div>
+
+      {/* get started? */}
+      <div
+        style={{
+          background: "#1890ff",
+          padding: "30px 32px",
+        }}
+      >
+        {/* Heading */}
+        <Title
+          level={2}
+          style={{
+            fontFamily: "Raleway",
+            textAlign: "center",
+            color: "white",
+            marginBottom: 12,
+          }}
+        >
+          Ready to Get Started?
+        </Title>
+
+        {/* Subtitle */}
+        <div style={{ textAlign: "center", marginBottom: 30 }}>
+          <Text
+            style={{
+              fontFamily: "Raleway",
+              fontSize: 18,
+              color: "rgba(255,255,255,0.9)",
+            }}
+          >
+            Contact us today to get an instant quotation and experience our
+            premium heavy vehicle transport services across the UAE.
+          </Text>
+        </div>
+
+        {/* Cards Section */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: isMobile ? "column" : "row",
+            gap: 20,
+            justifyContent: "space-between",
+            alignItems: "stretch",
+          }}
+        >
+          {/* Request Quotation Card */}
+          <Card
+            style={{
+              flex: 1,
+              textAlign: "center",
+              borderRadius: 12,
+              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            }}
+          >
+            <Space direction="vertical" size="middle" style={{ width: "100%" }}>
+              <FormOutlined style={{ fontSize: 36, color: "#1890ff" }} />
+              <Title
+                level={3}
+                style={{ marginBottom: 0, fontFamily: "Raleway" }}
+              >
+                Request a Quotation
+              </Title>
+              <Text type="secondary" style={{ fontFamily: "Raleway" }}>
+                Get a fast and accurate quote for your transport needs.
+              </Text>
+              <Button
+                type="primary"
+                size="large"
+                block
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.transform = "scale(1.05)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.transform = "scale(1)")
+                }
+                style={{ fontFamily: "Raleway" }}
+              >
+                <Link to="/quotation">Get Quote</Link>
+              </Button>
+            </Space>
+          </Card>
+
+          {/* Contact Info Card */}
+          <Card
+            style={{
+              flex: 1,
+              borderRadius: 12,
+              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+            }}
+          >
+            <Space
+              direction="vertical"
+              size="large"
+              style={{ width: "100%", padding: "0 10px" }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  fontFamily: "Raleway",
+                }}
+              >
+                <PhoneFilled style={{ fontSize: 30, color: "#1890ff" }} />
+                <div>
+                  <Text strong style={{ fontSize: 20, fontFamily: "Raleway" }}>
+                    Call Us
+                  </Text>
+                  <br />
+                  <Text
+                    type="secondary"
+                    style={{ fontSize: 16, fontFamily: "Roboto" }}
+                  >
+                    050-5555-555
+                  </Text>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <MailOutlined style={{ fontSize: 30, color: "#1890ff" }} />
+                <div>
+                  <Text strong style={{ fontSize: 20, fontFamily: "Raleway" }}>
+                    Email Us
+                  </Text>
+                  <br />
+                  <Text
+                    type="secondary"
+                    style={{ fontSize: 16, fontFamily: "Roboto" }}
+                  >
+                    info@kazwatransport.com
+                  </Text>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <MessageFilled style={{ fontSize: 30, color: "#1890ff" }} />
+                <div>
+                  <Text strong style={{ fontSize: 20, fontFamily: "Raleway" }}>
+                    Message Us
+                  </Text>
+                  <br />
+                  <Text
+                    type="secondary"
+                    style={{ fontSize: 16, fontFamily: "Roboto" }}
+                  >
+                    050-5555-555
+                  </Text>
+                </div>
+              </div>
+            </Space>
+          </Card>
         </div>
       </div>
     </Motion>
