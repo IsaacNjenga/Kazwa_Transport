@@ -9,6 +9,7 @@ import {
   MailOutlined,
 } from "@ant-design/icons";
 import { useUser } from "../contexts/UserContext";
+import { Link } from "react-router-dom";
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -31,7 +32,7 @@ function FooterContent() {
           src={bgImg}
           alt="bgImg"
           width={"100%"}
-          height={isMobile ? '1200' : 500}
+          height={isMobile ? "1200" : 500}
           style={{ objectFit: "cover", maxWidth: "100%" }}
         />
         <div
@@ -56,7 +57,7 @@ function FooterContent() {
             }}
           >
             {/* About */}
-            <div style={{ maxWidth: 350,padding:'0 20px' }}>
+            <div style={{ maxWidth: 350, padding: "0 20px" }}>
               <img
                 src={logo}
                 alt="Kazwa Transport"
@@ -98,29 +99,39 @@ function FooterContent() {
             </div>
 
             {/* Quick Links */}
-            <div style={{padding:'0 20px'}}>
+            <div style={{ padding: "0 20px" }}>
               <Title level={4} style={{ color: "#fff", fontFamily: "Raleway" }}>
                 Quick Links
               </Title>
               <Space direction="vertical" size="small">
-                <Text style={{ cursor: "pointer", color: "#ddd" }}>Home</Text>
-                <Text style={{ cursor: "pointer", color: "#ddd" }}>
-                  About Us
-                </Text>
-                <Text style={{ cursor: "pointer", color: "#ddd" }}>
-                  Services
-                </Text>
-                <Text style={{ cursor: "pointer", color: "#ddd" }}>
-                  Contact Us
-                </Text>
-                <Text style={{ cursor: "pointer", color: "#ddd" }}>
-                  Get Quotation
-                </Text>
+                <Link to="/">
+                  <Text style={{ cursor: "pointer", color: "#ddd" }}>Home</Text>
+                </Link>
+                <Link to="/about-us">
+                  <Text style={{ cursor: "pointer", color: "#ddd" }}>
+                    About Us
+                  </Text>
+                </Link>
+                <Link to="/services">
+                  <Text style={{ cursor: "pointer", color: "#ddd" }}>
+                    Services
+                  </Text>
+                </Link>
+                <Link to="/contact">
+                  <Text style={{ cursor: "pointer", color: "#ddd" }}>
+                    Contact Us
+                  </Text>
+                </Link>
+                <Link to="/quotation">
+                  <Text style={{ cursor: "pointer", color: "#ddd" }}>
+                    Get Quotation
+                  </Text>
+                </Link>
               </Space>
             </div>
 
             {/* Services */}
-            <div style={{padding:'0 20px'}}>
+            <div style={{ padding: "0 20px" }}>
               <Title level={4} style={{ color: "#fff", fontFamily: "Raleway" }}>
                 Our Services
               </Title>
@@ -135,8 +146,8 @@ function FooterContent() {
             </div>
 
             {/* Legal */}
-            
-            <div style={{padding:'0 20px'}}>
+
+            <div style={{ padding: "0 20px" }}>
               <Title level={4} style={{ color: "#fff", fontFamily: "Raleway" }}>
                 Legal
               </Title>

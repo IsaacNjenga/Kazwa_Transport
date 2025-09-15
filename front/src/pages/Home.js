@@ -61,15 +61,24 @@ function Home() {
     <Motion>
       {/* banner */}
       <div style={{ position: "relative" }}>
-        <Carousel autoplay autoplaySpeed={4800} dots={false} effect="scrollx">
+        <Carousel
+          autoplay
+          autoplaySpeed={4800}
+          dots={false}
+          effect="scrollx"
+          style={{ width: "100%" }}
+        >
           {bannerImages.map((img) => (
             <Image
               src={img}
               alt="bgImg"
               width="100%"
-              height={isMobile ? 500 : 800}
+              height={isMobile ? 400 : 800}
               preview={false}
-              style={{ objectFit: "cover", maxWidth: "100%" }}
+              style={{
+                objectFit: "cover",
+                maxWidth: "100%",
+              }}
             />
           ))}
         </Carousel>
