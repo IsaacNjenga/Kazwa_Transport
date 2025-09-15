@@ -1,10 +1,10 @@
-import React from "react";
 import Motion from "../components/Motion";
 import { useUser } from "../contexts/UserContext";
 import { Card, Col, Image, Row, Statistic, Typography } from "antd";
 import { motion } from "framer-motion";
 import CountUp from "react-countup";
-import { differenceInYears, formatDistanceToNow } from "date-fns";
+import { differenceInYears } from "date-fns";
+import "../assets/css/about.css";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -47,19 +47,20 @@ const team = [
   },
 ];
 
-const formatter = (value) => (
+const formatter = (value, suffix) => (
   <div style={{ margin: "0 auto", textAlign: "center" }}>
     <Text
       style={{
         textAlign: "center",
         fontFamily: "Roboto",
         color: "red",
-        fontSize: 40,
+        fontSize: 45,
         fontWeight: 700,
         margin: "0 auto",
       }}
     >
       <CountUp start={0} end={value} separator="," />
+      {suffix && "+"}
     </Text>
   </div>
 );
@@ -234,8 +235,8 @@ function About() {
       {/* statistics */}
       <div
         style={{
-          margin: "40px auto",
-          width: isMobile ? "100%" : "70%",
+          margin: "50px auto",
+          width: isMobile ? "100%" : "80%",
           padding: 10,
         }}
       >
@@ -292,12 +293,13 @@ function About() {
                   level={isMobile ? 4 : 1}
                   style={{ fontFamily: "Raleway", textAlign: "center" }}
                 >
-                  Staff At Hand
+                  Successful Devliveries
                 </Title>
               }
               value={300}
-              formatter={formatter}
-              valueStyle={{ textAlign: "center" }}
+              formatter={(value) => formatter(value, "+")}
+              valueStyle={{ textAlign: "center", display: "block", order: 1 }}
+              titleStyle={{ display: "block", order: 2 }}
             />
           </Col>
         </Row>
@@ -320,7 +322,7 @@ function About() {
             fontFamily: "Raleway",
             textAlign: "center",
             fontWeight: "800",
-            fontSize:18
+            fontSize: 18,
           }}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
