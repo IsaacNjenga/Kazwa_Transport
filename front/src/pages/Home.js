@@ -141,6 +141,10 @@ function Home() {
           background: `url(${whyUsImg}) center center no-repeat fixed`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+          height: "100%",
+          width: "100%",
         }}
       >
         <Title
@@ -168,7 +172,7 @@ function Home() {
           </Text>
         </div>
 
-        <div style={{ margin: "10px 40px", padding: 20 }}>
+        <div style={{ margin: "14px 40px", padding: 20 }}>
           <Row gutter={[16, 16]}>
             {servicesCard.map((card) => (
               <Col xs={24} sm={12} md={6} key={card.id}>
@@ -178,7 +182,8 @@ function Home() {
                     height: 300,
                     boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
                     borderRadius: 12,
-                    background: "rgba(0,0,0,0.3)",
+                    backdropFilter: "blur(2px)",
+                    border: "1px solid rgba(0,0,0,0)",
                   }}
                 >
                   <p style={{ textAlign: "center" }}>{card.icon}</p>
@@ -201,14 +206,22 @@ function Home() {
                   </div>
                   <div
                     style={{
-                      marginBottom: 10,
+                      marginBottom: 15,
                       fontFamily: "Raleway",
                       fontWeight: 500,
                     }}
                   >
-                    <Text type="secondary">{card.text}</Text>
+                    <Text
+                      type="secondary"
+                      style={{
+                        fontFamily: "Roboto",
+                        fontSize: 14,
+                      }}
+                    >
+                      {card.text}
+                    </Text>
                   </div>
-                  <div style={{ position: "absolute", bottom: 2 }}>
+                  <div style={{ position: "absolute", bottom: 0 }}>
                     <Link to="/quotation">
                       <p
                         style={{
@@ -378,6 +391,7 @@ function Home() {
                 fontSize: 20,
                 textAlign: "justify",
                 color: "#ffffff",
+                marginBottom: 20,
               }}
             >
               We are a trusted pickup transport company with over 24 years of
@@ -399,6 +413,7 @@ function Home() {
                 justifyContent: "center",
                 alignItems: "center",
                 color: "#ffffff",
+                marginTop: 16,
               }}
             >
               <span>
