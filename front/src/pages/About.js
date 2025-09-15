@@ -1,6 +1,7 @@
 import Motion from "../components/Motion";
 import { useUser } from "../contexts/UserContext";
 import {
+  Button,
   Card,
   Col,
   Form,
@@ -22,6 +23,7 @@ import {
   MailOutlined,
   PhoneOutlined,
 } from "@ant-design/icons";
+import Swal from "sweetalert2";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -72,6 +74,7 @@ const inputStyle = {
   fontFamily: "Roboto",
   borderRadius: 0,
   color: "#ffff",
+  background: "rgba(0,0,0,0.1)",
 };
 
 const labelStyle = {
@@ -104,13 +107,42 @@ const formatter = (value, suffix, start, duration) => (
 
 function About() {
   const { isMobile } = useUser();
+  const [form] = Form.useForm();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const [start, setStart] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [values, setValues] = useState({ name: "", email: "", message: "" });
 
   if (isInView && !start) setStart(true);
 
-  //https://images.pexels.com/photos/33734430/pexels-photo-33734430.jpeg
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
+  };
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      const allValues = await form.validateFields();
+      console.log(allValues);
+      Swal.fire({
+        icon: "success",
+        title: "Message sent successfully",
+        text: "Thank you for reaching out to us. We will get back to you as soon as possible.",
+      });
+    } catch (error) {
+      console.error(error);
+      Swal.fire({
+        icon: "error",
+        title: "Something went wrong",
+        text: "Please try again",
+      });
+    } finally {
+      setLoading(false);
+      form.resetFields();
+    }
+  };
 
   return (
     <Motion>
@@ -640,6 +672,7 @@ function About() {
                   margin: "0 auto",
                   width: "100%",
                   borderColor: "rgba(0, 0, 0, 0.3)",
+                  borderRadius: 0,
                 }}
               >
                 <Form
@@ -647,28 +680,61 @@ function About() {
                   variant="filled"
                   size="large"
                   labelAlign="right"
-                  //style={{ maxWidth: 500, margin: "0 auto", width: "100%" }}
+                  onFinish={handleSubmit}
+                  form={form}
                 >
                   <Form.Item
                     label={<span style={labelStyle}>Name</span>}
                     name="name"
                   >
-                    <Input style={inputStyle} />
+                    <Input
+                      style={inputStyle}
+                      value={values.name}
+                      onChange={(val) => handleInputChange(val, "name")}
+                    />
                   </Form.Item>
                   <Form.Item
                     label={<span style={labelStyle}>Email</span>}
                     name="email"
                   >
-                    <Input style={inputStyle} />
+                    <Input
+                      type="email"
+                      style={inputStyle}
+                      value={values.email}
+                      onChange={(val) => handleInputChange(val, "email")}
+                    />
                   </Form.Item>
                   <Form.Item
                     label={<span style={labelStyle}>Message</span>}
                     name="message"
                   >
                     <Input.TextArea
+                      value={values.message}
                       style={{ ...inputStyle, height: 80 }}
+                      onChange={(val) => handleInputChange(val, "message")}
                       rows={4}
                     />
+                  </Form.Item>
+                  <Form.Item>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      style={{
+                        width: "100%",
+                        background: "whitesmoke",
+                        color: "#333",
+                        fontWeight: 400,
+                        fontFamily: "Roboto",
+                        borderRadius: 0,
+                      }}
+                      block
+                      loading={loading}
+                      // disabled={
+                      //   !values.name && !values.email && !values.message
+                      // }
+                    >
+                      {loading ? "Submitting..." : "Submit"}
+                    </Button>
                   </Form.Item>
                 </Form>
               </Card>
