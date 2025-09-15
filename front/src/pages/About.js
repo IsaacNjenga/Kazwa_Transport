@@ -1,10 +1,12 @@
 import Motion from "../components/Motion";
 import { useUser } from "../contexts/UserContext";
 import { Card, Col, Image, Row, Statistic, Typography } from "antd";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import CountUp from "react-countup";
 import { differenceInYears } from "date-fns";
 import "../assets/css/about.css";
+import SplitText from "../components/SplitText";
+import { useRef, useState } from "react";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -25,6 +27,9 @@ const bannerDiv = {
 };
 
 const yearsInService = differenceInYears(new Date(), new Date(1998, 0, 1));
+
+const img =
+  "https://images.pexels.com/photos/12267889/pexels-photo-12267889.jpeg";
 
 const team = [
   {
@@ -47,7 +52,7 @@ const team = [
   },
 ];
 
-const formatter = (value, suffix) => (
+const formatter = (value, suffix, start, duration) => (
   <div style={{ margin: "0 auto", textAlign: "center" }}>
     <Text
       style={{
@@ -59,16 +64,23 @@ const formatter = (value, suffix) => (
         margin: "0 auto",
       }}
     >
-      <CountUp start={0} end={value} separator="," />
-      {suffix && "+"}
+      {start ? (
+        <CountUp end={value} duration={duration} suffix={suffix} />
+      ) : (
+        "0" + (suffix || "")
+      )}
     </Text>
   </div>
 );
 
 function About() {
   const { isMobile } = useUser();
-  const img =
-    "https://images.pexels.com/photos/12267889/pexels-photo-12267889.jpeg";
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const [start, setStart] = useState(false);
+
+  if (isInView && !start) setStart(true);
+
   return (
     <Motion>
       <div style={{ position: "relative" }}>
@@ -117,16 +129,32 @@ function About() {
 
       {/* hero */}
       <div>
-        <Title
-          style={{
-            fontFamily: "Raleway",
-            fontWeight: 800,
-            textAlign: "center",
-            marginTop: 40,
-          }}
-        >
-          Moving UAE Forward, One Pickup at a Time
-        </Title>
+        <div style={{ textAlign: "center", marginBottom: 0 }}>
+          <SplitText
+            text={
+              <Title
+                style={{
+                  fontFamily: "Raleway",
+                  fontWeight: 800,
+                  textAlign: "center",
+                  marginTop: 40,
+                  marginBottom: 0,
+                }}
+              >
+                Moving UAE Forward, One Pickup at a Time
+              </Title>
+            }
+            delay={50}
+            duration={0.1}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+          />
+        </div>
         <Paragraph
           style={{
             fontFamily: "Roboto",
@@ -136,6 +164,7 @@ function About() {
             fontSize: 18,
             marginBottom: 20,
             padding: 10,
+            marginTop: 0,
           }}
           type="secondary"
         >
@@ -234,6 +263,7 @@ function About() {
 
       {/* statistics */}
       <div
+        ref={ref}
         style={{
           margin: "50px auto",
           width: isMobile ? "100%" : "80%",
@@ -244,60 +274,124 @@ function About() {
           <Col xs={24} md={12} sm={6}>
             <Statistic
               title={
-                <Title
-                  level={isMobile ? 4 : 1}
-                  style={{ fontFamily: "Raleway", textAlign: "center" }}
-                >
-                  Years In Service
-                </Title>
+                <div style={{ textAlign: "center", marginBottom: 0 }}>
+                  <SplitText
+                    text={
+                      <Title
+                        level={isMobile ? 4 : 1}
+                        style={{
+                          fontFamily: "Raleway",
+                        }}
+                      >
+                        Years Of Service
+                      </Title>
+                    }
+                    delay={25}
+                    duration={0.1}
+                    ease="power3.out"
+                    splitType="chars"
+                    from={{ opacity: 0, y: 40 }}
+                    to={{ opacity: 1, y: 0 }}
+                    threshold={0.1}
+                    textAlign="center"
+                  />
+                </div>
               }
               value={yearsInService}
-              formatter={formatter}
+              formatter={(val) => formatter(val, "", start, 1)}
               valueStyle={{ textAlign: "center" }}
             />
           </Col>
           <Col xs={24} md={12} sm={6}>
             <Statistic
               title={
-                <Title
-                  level={isMobile ? 4 : 1}
-                  style={{ fontFamily: "Raleway", textAlign: "center" }}
-                >
-                  Clients
-                </Title>
+                <div style={{ textAlign: "center", marginBottom: 0 }}>
+                  <SplitText
+                    text={
+                      <Title
+                        level={isMobile ? 4 : 1}
+                        style={{
+                          fontFamily: "Raleway",
+                        }}
+                      >
+                        Satisfied Clients
+                      </Title>
+                    }
+                    delay={25}
+                    duration={0.1}
+                    ease="power3.out"
+                    splitType="chars"
+                    from={{ opacity: 0, y: 40 }}
+                    to={{ opacity: 1, y: 0 }}
+                    threshold={0.1}
+                    textAlign="center"
+                  />
+                </div>
               }
               value={100}
-              formatter={formatter}
+              formatter={(val) => formatter(val, "", start, 2)}
               valueStyle={{ textAlign: "center" }}
             />
           </Col>
           <Col xs={24} md={12} sm={6}>
             <Statistic
               title={
-                <Title
-                  level={isMobile ? 4 : 1}
-                  style={{ fontFamily: "Raleway", textAlign: "center" }}
-                >
-                  Trucks In Stock
-                </Title>
+                <div style={{ textAlign: "center", marginBottom: 0 }}>
+                  <SplitText
+                    text={
+                      <Title
+                        level={isMobile ? 4 : 1}
+                        style={{
+                          fontFamily: "Raleway",
+                        }}
+                      >
+                        Trucks In Stock
+                      </Title>
+                    }
+                    delay={25}
+                    duration={0.1}
+                    ease="power3.out"
+                    splitType="chars"
+                    from={{ opacity: 0, y: 40 }}
+                    to={{ opacity: 1, y: 0 }}
+                    threshold={0.1}
+                    textAlign="center"
+                  />
+                </div>
               }
               value={100}
-              formatter={formatter}
+              formatter={(val) => formatter(val, "", start, 3)}
               valueStyle={{ textAlign: "center" }}
             />
           </Col>
           <Col xs={24} md={12} sm={6}>
             <Statistic
               title={
-                <Title
-                  level={isMobile ? 4 : 1}
-                  style={{ fontFamily: "Raleway", textAlign: "center" }}
-                >
-                  Successful Devliveries
-                </Title>
+                <div style={{ textAlign: "center", marginBottom: 0 }}>
+                  <SplitText
+                    text={
+                      <Title
+                        level={isMobile ? 4 : 1}
+                        style={{
+                          fontFamily: "Raleway",
+                        }}
+                      >
+                        Successful Deliveries
+                      </Title>
+                    }
+                    delay={25}
+                    duration={0.1}
+                    ease="power3.out"
+                    splitType="chars"
+                    from={{ opacity: 0, y: 40 }}
+                    to={{ opacity: 1, y: 0 }}
+                    threshold={0.1}
+                    textAlign="center"
+                  />
+                </div>
               }
               value={300}
-              formatter={(value) => formatter(value, "+")}
+              formatter={(val) => formatter(val, "+", start, 4)}
               valueStyle={{ textAlign: "center", display: "block", order: 1 }}
               titleStyle={{ display: "block", order: 2 }}
             />
@@ -307,15 +401,32 @@ function About() {
 
       {/* the team */}
       <div>
-        <Title
-          style={{
-            fontFamily: "Raleway",
-            textAlign: "center",
-            fontWeight: "800",
-          }}
-        >
-          Our Team
-        </Title>
+        {" "}
+        <div style={{ textAlign: "center", marginBottom: 0 }}>
+          <SplitText
+            text={
+              <Title
+                style={{
+                  fontFamily: "Raleway",
+                  fontWeight: 800,
+                  marginTop: 40,
+                  marginBottom: 0,
+                }}
+              >
+                OUR TEAM
+              </Title>
+            }
+            delay={100}
+            duration={0.1}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+          />
+        </div>
         <Paragraph
           type="secondary"
           style={{
@@ -328,7 +439,6 @@ function About() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
           pellentesque viverra quam in aliquam laoreet quis justo.
         </Paragraph>
-
         <div style={{ margin: 10, padding: 20 }}>
           <Row gutter={[16, 16]}>
             {team.map((t) => (
