@@ -18,9 +18,12 @@ import {
   MailOutlined,
   MessageFilled,
   PhoneFilled,
+  WhatsAppOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { servicesCard, whyData } from "../assets/data/data";
+import { motion } from "framer-motion";
+import SplitText from "../components/SplitText";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -45,9 +48,6 @@ const bannerImages = [
 
 const aboutImg =
   "https://images.unsplash.com/photo-1616432043562-3671ea2e5242?w=900";
-
-const whyUsImg =
-  "https://images.pexels.com/photos/11087830/pexels-photo-11087830.jpeg";
 
 const bannerDiv = {
   position: "absolute",
@@ -104,19 +104,25 @@ function Home() {
               margin: isMobile ? "0 20px" : "0 36px",
             }}
           >
-            <Title
-              style={{
-                color: "#fff",
-                fontFamily: "Raleway",
-                textAlign: "left",
-                fontWeight: 700,
-                letterSpacing: 2,
-                fontSize: isMobile ? 32 : 50,
-                marginBottom: 0,
-              }}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              Reliable Pickup Transport Services Across Dubai & UAE On-Demand
-            </Title>
+              <Title
+                style={{
+                  color: "#fff",
+                  fontFamily: "Raleway",
+                  textAlign: "left",
+                  fontWeight: 700,
+                  letterSpacing: 2,
+                  fontSize: isMobile ? 32 : 50,
+                  marginBottom: 0,
+                }}
+              >
+                Reliable Pickup Transport Services Across Dubai & UAE On-Demand
+              </Title>
+            </motion.div>
             <Text
               style={{
                 marginTop: 0,
@@ -149,11 +155,38 @@ function Home() {
           width: "100%",
         }}
       >
-        <Title
-          style={{ textAlign: "center", fontFamily: "Raleway", color: "#333" }}
+        <div
+          style={{
+            textAlign: "center",
+            marginBottom: 0,
+          }}
         >
-          OUR SERVICES
-        </Title>
+          <SplitText
+            text={
+              <>
+                <Title
+                  style={{
+                    textAlign: "center",
+                    fontFamily: "Raleway",
+                    color: "#333",
+                    marginBottom: 0,
+                  }}
+                >
+                  OUR SERVICES
+                </Title>
+              </>
+            }
+            delay={100}
+            duration={0.3}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+          />
+        </div>
         <div
           style={{
             textAlign: "center",
@@ -161,11 +194,12 @@ function Home() {
         >
           <Text
             style={{
-              fontFamily: "Raleway",
+              fontFamily: "Roboto",
               fontWeight: 600,
               marginBottom: 20,
               color: "#333",
               fontSize: 20,
+              marginTop: 0,
             }}
             type="secondary"
           >
@@ -173,7 +207,6 @@ function Home() {
             and equipment across the UAE
           </Text>
         </div>
-
         <div style={{ margin: "14px 40px", padding: 20 }}>
           <Row gutter={[16, 16]}>
             {servicesCard.map((card) => (
@@ -182,10 +215,12 @@ function Home() {
                   hoverable
                   style={{
                     height: 300,
-                    boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
+                    //boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
                     borderRadius: 12,
                     backdropFilter: "blur(2px)",
                     border: "1px solid rgba(0,0,0,0)",
+                    transform: "translateY(-5px)",
+                    boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
                   }}
                 >
                   <p style={{ textAlign: "center" }}>{card.icon}</p>
@@ -261,15 +296,35 @@ function Home() {
         }}
       >
         {isMobile ? (
-          <Title
+          <div
             style={{
               textAlign: "center",
-              fontFamily: "Raleway",
-              color: "#fff",
+              margin: 0,
             }}
           >
-            WHY CHOOSE US?
-          </Title>
+            <SplitText
+              text={
+                <Title
+                  style={{
+                    textAlign: "center",
+                    fontFamily: "Raleway",
+                    color: "#fff",
+                  }}
+                >
+                  WHY CHOOSE US?
+                </Title>
+              }
+              delay={100}
+              duration={0.3}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+            />
+          </div>
         ) : (
           <Divider
             style={{
@@ -279,15 +334,35 @@ function Home() {
               textAlign: "center",
             }}
           >
-            <Title
+            <div
               style={{
                 textAlign: "center",
-                fontFamily: "Raleway",
-                color: "#fff",
+                margin: 0,
               }}
             >
-              WHY CHOOSE US?
-            </Title>
+              <SplitText
+                text={
+                  <Title
+                    style={{
+                      textAlign: "center",
+                      fontFamily: "Raleway",
+                      color: "#fff",
+                    }}
+                  >
+                    WHY CHOOSE US?
+                  </Title>
+                }
+                delay={100}
+                duration={0.3}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+                textAlign="center"
+              />
+            </div>
           </Divider>
         )}
         <div
@@ -297,7 +372,7 @@ function Home() {
         >
           <Text
             style={{
-              fontFamily: "Raleway",
+              fontFamily: "Roboto",
               fontWeight: 600,
               marginBottom: 20,
               color: "#fff",
@@ -318,9 +393,11 @@ function Home() {
                   hoverable
                   style={{
                     height: "auto",
-                    boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
+                    //boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
                     borderRadius: 12,
                     padding: isMobile ? 0 : 10,
+                    transform: "translateY(-5px)",
+                    boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
                   }}
                 >
                   <p style={{ textAlign: "center" }}>{d.icon}</p>
@@ -377,16 +454,30 @@ function Home() {
               borderRadius: 12,
             }}
           >
-            <Title
-              style={{
-                fontFamily: "Raleway",
-                textAlign: isMobile ? "center" : "left",
-                fontWeight: 800,
-                color: "#ffffff",
-              }}
-            >
-              About Us
-            </Title>
+            {" "}
+            <SplitText
+              text={
+                <Title
+                  style={{
+                    fontFamily: "Raleway",
+                    textAlign: isMobile ? "center" : "left",
+                    fontWeight: 800,
+                    color: "#ffffff",
+                  }}
+                >
+                  About Us
+                </Title>
+              }
+              delay={100}
+              duration={0.3}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+            />
             <Paragraph
               style={{
                 fontFamily: "Roboto",
@@ -460,19 +551,33 @@ function Home() {
           padding: "30px 32px",
         }}
       >
-        {/* Heading */}
-        <Title
-          level={2}
-          style={{
-            fontFamily: "Raleway",
-            textAlign: "center",
-            color: "white",
-            marginBottom: 12,
-          }}
-        >
-          Ready to Get Started?
-        </Title>
-
+        {/* Heading */}{" "}
+        <div style={{ textAlign: "center", margin: 0 }}>
+          <SplitText
+            text={
+              <Title
+                level={2}
+                style={{
+                  fontFamily: "Raleway",
+                  textAlign: "center",
+                  color: "white",
+                  marginBottom: 12,
+                }}
+              >
+                Ready to Get Started?
+              </Title>
+            }
+            delay={50}
+            duration={0.1}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+          />
+        </div>
         {/* Subtitle */}
         <div style={{ textAlign: "center", marginBottom: 30 }}>
           <Text
@@ -486,7 +591,6 @@ function Home() {
             premium heavy vehicle transport services across the UAE.
           </Text>
         </div>
-
         {/* Cards Section */}
         <div
           style={{
@@ -598,6 +702,42 @@ function Home() {
                     style={{ fontSize: 16, fontFamily: "Roboto" }}
                   >
                     050-5555-555
+                  </Text>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <WhatsAppOutlined style={{ fontSize: 30, color: "green" }} />
+                <div
+                  style={{ transition: "all 0.3 ease" }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.transform = "scale(1.05)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.transform = "scale(1)")
+                  }
+                >
+                  <Text strong style={{ fontSize: 20, fontFamily: "Raleway" }}>
+                    Chat With Us
+                  </Text>
+                  <br />
+                  {/* <Button
+                    type="link"
+                    href="https://wa.me/971505555555"
+                    size="large"
+                  /> */}
+                  <Text
+                    type="secondary"
+                    style={{
+                      fontSize: 16,
+                      fontFamily: "Roboto",
+                      cursor: "pointer",
+                      fontWeight: "bold",
+                      transition: "all 0.3s ease",
+                    }}
+                    onClick={() => window.open("https://wa.me/971505555555")}
+                  >
+                    +971 50 555-5555
                   </Text>
                 </div>
               </div>

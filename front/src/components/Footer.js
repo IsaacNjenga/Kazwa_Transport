@@ -7,6 +7,7 @@ import {
   EnvironmentOutlined,
   PhoneOutlined,
   MailOutlined,
+  WhatsAppOutlined,
 } from "@ant-design/icons";
 import { useUser } from "../contexts/UserContext";
 import { Link } from "react-router-dom";
@@ -89,11 +90,15 @@ function FooterContent() {
               {/* Social Links */}
               <div style={{ marginTop: 12 }}>
                 <Space size="middle">
-                  <FacebookFilled style={{ fontSize: 24, cursor: "pointer" }} />
+                  <FacebookFilled style={{ fontSize: 26, cursor: "pointer" }} />
                   <InstagramFilled
-                    style={{ fontSize: 24, cursor: "pointer" }}
+                    style={{ fontSize: 26, cursor: "pointer" }}
                   />
-                  <XOutlined style={{ fontSize: 24, cursor: "pointer" }} />
+                  <XOutlined style={{ fontSize: 26, cursor: "pointer" }} />
+                  <WhatsAppOutlined
+                    style={{ fontSize: 26, cursor: "pointer" }}
+                    onClick={() => window.open("https://wa.me/971505555555")}
+                  />
                 </Space>
               </div>
             </div>
