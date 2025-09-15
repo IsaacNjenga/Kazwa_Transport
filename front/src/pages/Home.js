@@ -32,11 +32,22 @@ const bannerImg3 =
   "https://images.unsplash.com/photo-1707555235858-feea68bb1cc5?w=900";
 const bannerImg4 =
   "https://plus.unsplash.com/premium_photo-1661935334659-a4f95e515c3b?w=900";
+const bannerImg5 =
+  "https://images.pexels.com/photos/33462124/pexels-photo-33462124.jpeg";
 
-const bannerImages = [bannerImg, bannerImg2, bannerImg3, bannerImg4];
+const bannerImages = [
+  bannerImg,
+  bannerImg2,
+  bannerImg3,
+  bannerImg4,
+  bannerImg5,
+];
 
 const aboutImg =
   "https://images.unsplash.com/photo-1616432043562-3671ea2e5242?w=900";
+
+const whyUsImg =
+  "https://images.pexels.com/photos/11087830/pexels-photo-11087830.jpeg";
 
 const bannerDiv = {
   position: "absolute",
@@ -123,8 +134,18 @@ function Home() {
       </div>
 
       {/* services */}
-      <div style={{ marginBottom: 20, padding: 10 }}>
-        <Title style={{ textAlign: "center", fontFamily: "Raleway" }}>
+      <div
+        style={{
+          marginBottom: 0,
+          padding: 10,
+          background: `url(${whyUsImg}) center center no-repeat fixed`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
+        <Title
+          style={{ textAlign: "center", fontFamily: "Raleway", color: "#fff" }}
+        >
           OUR SERVICES
         </Title>
         <div
@@ -137,6 +158,8 @@ function Home() {
               fontFamily: "Raleway",
               fontWeight: 600,
               marginBottom: 20,
+              color: "#fff",
+              fontSize: 20,
             }}
             type="secondary"
           >
@@ -155,6 +178,7 @@ function Home() {
                     height: 300,
                     boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
                     borderRadius: 12,
+                    background: "rgba(0,0,0,0.3)",
                   }}
                 >
                   <p style={{ textAlign: "center" }}>{card.icon}</p>
@@ -210,21 +234,43 @@ function Home() {
       </div>
 
       {/* why us? */}
-      <div style={{ marginTop: 30, padding: 10, marginBottom: 20 }}>
+      <div
+        style={{
+          marginTop: 0,
+          padding: 10,
+          marginBottom: 0,
+          background:
+            'url("https://images.pexels.com/photos/29148060/pexels-photo-29148060.jpeg") center center no-repeat fixed',
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
         {isMobile ? (
-          <Title style={{ textAlign: "center", fontFamily: "Raleway" }}>
+          <Title
+            style={{
+              textAlign: "center",
+              fontFamily: "Raleway",
+              color: "#fff",
+            }}
+          >
             WHY CHOOSE US?
           </Title>
         ) : (
           <Divider
             style={{
-              borderColor: "#333",
+              borderColor: "#ffffffff",
               padding: "0 30px",
               margin: 0,
               textAlign: "center",
             }}
           >
-            <Title style={{ textAlign: "center", fontFamily: "Raleway" }}>
+            <Title
+              style={{
+                textAlign: "center",
+                fontFamily: "Raleway",
+                color: "#fff",
+              }}
+            >
               WHY CHOOSE US?
             </Title>
           </Divider>
@@ -239,6 +285,8 @@ function Home() {
               fontFamily: "Raleway",
               fontWeight: 600,
               marginBottom: 20,
+              color: "#fff",
+              fontSize: 20,
             }}
             type="secondary"
           >
@@ -288,7 +336,15 @@ function Home() {
       </div>
 
       {/* about us */}
-      <div style={{ padding: "20px 32px", background: "whitesmoke" }}>
+      <div
+        style={{
+          padding: "20px 32px",
+          background:
+            'url("https://images.pexels.com/photos/29148060/pexels-photo-29148060.jpeg") center center no-repeat fixed',
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
         <div
           style={{
             display: "flex",
@@ -297,12 +353,21 @@ function Home() {
             justifyContent: "space-around",
           }}
         >
-          <div style={{ width: isMobile ? "100%" : "60%", padding: 20 }}>
+          <div
+            style={{
+              width: isMobile ? "100%" : "60%",
+              padding: isMobile ? 8 : 15,
+              background:
+                "linear-gradient(to top ,rgba(0, 0, 0, 0.15) 40%, rgba(0, 0, 0, 0.33) 100%)",
+              borderRadius: 12,
+            }}
+          >
             <Title
               style={{
                 fontFamily: "Raleway",
                 textAlign: isMobile ? "center" : "left",
                 fontWeight: 800,
+                color: "#ffffff",
               }}
             >
               About Us
@@ -312,6 +377,7 @@ function Home() {
                 fontFamily: "Roboto",
                 fontSize: 20,
                 textAlign: "justify",
+                color: "#ffffff",
               }}
             >
               We are a trusted pickup transport company with over 24 years of
@@ -332,6 +398,7 @@ function Home() {
                 fontSize: 22,
                 justifyContent: "center",
                 alignItems: "center",
+                color: "#ffffff",
               }}
             >
               <span>
@@ -346,7 +413,7 @@ function Home() {
           </div>
           <div
             style={{
-              display: "flex",
+              display: isMobile ? "none" : "flex",
               justifyContent: "center",
               alignItems: "center",
               padding: 20,

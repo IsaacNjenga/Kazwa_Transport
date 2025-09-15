@@ -41,7 +41,7 @@ export const servicesCard = [
     id: 4,
     icon: <HomeFilled style={iconStyle} />,
     title: "Other Businesses We Serve",
-    text: "Customized transportation solutions for various industries inclding manufacturing, retail and more.",
+    text: "Customized transportation solutions for various industries including manufacturing, retail and more.",
   },
 ];
 
