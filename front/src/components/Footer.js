@@ -75,14 +75,17 @@ function FooterContent() {
               {/* Contact Info */}
               <Space direction="vertical" size="small">
                 <Text style={{ color: "#ddd" }}>
-                  <EnvironmentOutlined style={{ marginRight: 8 }} />
+                  <EnvironmentOutlined
+                    style={{ marginRight: 8, fontSize: 20 }}
+                  />
                   Dubai, UAE
                 </Text>
                 <Text style={{ color: "#ddd" }}>
-                  <PhoneOutlined style={{ marginRight: 8 }} /> +971 50 555 5555
+                  <PhoneOutlined style={{ marginRight: 8, fontSize: 20 }} />{" "}
+                  +971 50 555 5555
                 </Text>
                 <Text style={{ color: "#ddd" }}>
-                  <MailOutlined style={{ marginRight: 8 }} />{" "}
+                  <MailOutlined style={{ marginRight: 8, fontSize: 20 }} />{" "}
                   info@kazwatransport.com
                 </Text>
               </Space>

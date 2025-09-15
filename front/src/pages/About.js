@@ -1,12 +1,27 @@
 import Motion from "../components/Motion";
 import { useUser } from "../contexts/UserContext";
-import { Card, Col, Image, Row, Statistic, Typography } from "antd";
+import {
+  Card,
+  Col,
+  Form,
+  Image,
+  Input,
+  Row,
+  Space,
+  Statistic,
+  Typography,
+} from "antd";
 import { motion, useInView } from "framer-motion";
 import CountUp from "react-countup";
 import { differenceInYears } from "date-fns";
 import "../assets/css/about.css";
 import SplitText from "../components/SplitText";
 import { useRef, useState } from "react";
+import {
+  EnvironmentOutlined,
+  MailOutlined,
+  PhoneOutlined,
+} from "@ant-design/icons";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -52,6 +67,20 @@ const team = [
   },
 ];
 
+const inputStyle = {
+  height: 40,
+  fontFamily: "Roboto",
+  borderRadius: 0,
+  color: "#ffff",
+};
+
+const labelStyle = {
+  fontFamily: "Raleway",
+  color: "#ffffff",
+  fontSize: 16,
+  fontWeight: 400,
+};
+
 const formatter = (value, suffix, start, duration) => (
   <div style={{ margin: "0 auto", textAlign: "center" }}>
     <Text
@@ -80,6 +109,8 @@ function About() {
   const [start, setStart] = useState(false);
 
   if (isInView && !start) setStart(true);
+
+  //https://images.pexels.com/photos/33734430/pexels-photo-33734430.jpeg
 
   return (
     <Motion>
@@ -116,7 +147,7 @@ function About() {
                   textAlign: "left",
                   fontWeight: 700,
                   letterSpacing: 2,
-                  fontSize: isMobile ? 32 : 50,
+                  fontSize: isMobile ? 36 : 60,
                   marginBottom: 0,
                 }}
               >
@@ -479,6 +510,170 @@ function About() {
               </Col>
             ))}
           </Row>
+        </div>
+      </div>
+
+      {/* get in touch */}
+      <div
+        style={{
+          marginTop: 0,
+          marginBottom: 0,
+          background:
+            'url("https://images.pexels.com/photos/33734430/pexels-photo-33734430.jpeg") center center no-repeat fixed',
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
+        <div
+          style={{
+            margin: 0,
+            padding: "30px 32px",
+            backdropFilter: "blur(1px)",
+            background: "rgba(0,0,0,0.5)",
+          }}
+        >
+          <div style={{ textAlign: "center", marginBottom: 0 }}>
+            <SplitText
+              text={
+                <Title
+                  style={{
+                    fontFamily: "Raleway",
+                    fontWeight: 800,
+                    marginTop: 40,
+                    marginBottom: 0,
+                    color: "#fff",
+                  }}
+                >
+                  Get In Touch
+                </Title>
+              }
+              delay={100}
+              duration={0.1}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+            />
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              flexDirection: isMobile ? "column" : "row",
+            }}
+          >
+            <div
+              style={{
+                padding: 20,
+                margin: 10,
+                width: isMobile ? "100%" : "30%",
+                textAlign: isMobile ? "center" : "left",
+              }}
+            >
+              <Space
+                direction="vertical"
+                size="small"
+                style={{ marginRight: 25 }}
+              >
+                <Title
+                  level={3}
+                  style={{ fontFamily: "Raleway", color: "#ffffff" }}
+                >
+                  Location
+                </Title>
+                <Text style={{ color: "#ffffff" }}>
+                  <EnvironmentOutlined
+                    style={{ marginRight: 8, fontSize: 20 }}
+                  />
+                  573-00444, Dubai, UAE
+                </Text>
+                <Text style={{ color: "#ffffff" }}>
+                  <PhoneOutlined style={{ marginRight: 8, fontSize: 20 }} />{" "}
+                  +971 50 555 5555
+                </Text>
+                <Text style={{ color: "#ffffff" }}>
+                  <MailOutlined style={{ marginRight: 8, fontSize: 20 }} />{" "}
+                  info@kazwatransport.com
+                </Text>
+              </Space>
+              <Space direction="vertical" size="small">
+                <Title
+                  level={3}
+                  style={{ fontFamily: "Raleway", color: "#ffffff" }}
+                >
+                  Working Hours
+                </Title>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 14,
+                    color: "#ffffff",
+                  }}
+                >
+                  <span>Weekdays: 8:00 AM - 5:00 PM</span>
+                  <span>Saturdays: 10:00 AM - 4:00 PM</span>
+                  <span>Sundays: 10:00 AM - 2:00 PM</span>
+                </div>
+              </Space>
+            </div>
+
+            {/* form */}
+
+            <div
+              style={{
+                padding: 10,
+                margin: 10,
+                width: isMobile ? "100%" : "70%",
+              }}
+            >
+              <Card
+                hoverable
+                width={400}
+                style={{
+                  background:
+                    "linear-gradient(to right, #4079eace 50%, #188fffa3 100%)",
+                  margin: "0 auto",
+                  width: "100%",
+                  borderColor: "rgba(0, 0, 0, 0.3)",
+                }}
+              >
+                <Form
+                  layout="vertical"
+                  variant="filled"
+                  size="large"
+                  labelAlign="right"
+                  //style={{ maxWidth: 500, margin: "0 auto", width: "100%" }}
+                >
+                  <Form.Item
+                    label={<span style={labelStyle}>Name</span>}
+                    name="name"
+                  >
+                    <Input style={inputStyle} />
+                  </Form.Item>
+                  <Form.Item
+                    label={<span style={labelStyle}>Email</span>}
+                    name="email"
+                  >
+                    <Input style={inputStyle} />
+                  </Form.Item>
+                  <Form.Item
+                    label={<span style={labelStyle}>Message</span>}
+                    name="message"
+                  >
+                    <Input.TextArea
+                      style={{ ...inputStyle, height: 80 }}
+                      rows={4}
+                    />
+                  </Form.Item>
+                </Form>
+              </Card>
+            </div>
+          </div>
         </div>
       </div>
     </Motion>
