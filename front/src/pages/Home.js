@@ -89,6 +89,8 @@ function Home() {
               style={{
                 objectFit: "cover",
                 maxWidth: "100%",
+                size: "cover",
+                position: "center",
               }}
             />
           ))}
@@ -138,7 +140,7 @@ function Home() {
         style={{
           marginBottom: 0,
           padding: 10,
-          background: `url(${whyUsImg}) center center no-repeat fixed`,
+          //background: `url(${whyUsImg}) center center no-repeat fixed`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -148,7 +150,7 @@ function Home() {
         }}
       >
         <Title
-          style={{ textAlign: "center", fontFamily: "Raleway", color: "#fff" }}
+          style={{ textAlign: "center", fontFamily: "Raleway", color: "#333" }}
         >
           OUR SERVICES
         </Title>
@@ -162,7 +164,7 @@ function Home() {
               fontFamily: "Raleway",
               fontWeight: 600,
               marginBottom: 20,
-              color: "#fff",
+              color: "#333",
               fontSize: 20,
             }}
             type="secondary"
@@ -351,7 +353,7 @@ function Home() {
       {/* about us */}
       <div
         style={{
-          padding: "20px 32px",
+          padding: isMobile ? "15px 25px" : "20px 32px",
           background:
             'url("https://images.pexels.com/photos/29148060/pexels-photo-29148060.jpeg") center center no-repeat fixed',
           backgroundRepeat: "no-repeat",
@@ -369,7 +371,7 @@ function Home() {
           <div
             style={{
               width: isMobile ? "100%" : "60%",
-              padding: isMobile ? 8 : 15,
+              padding: isMobile ? "5px 18px" : 15,
               background:
                 "linear-gradient(to top ,rgba(0, 0, 0, 0.15) 40%, rgba(0, 0, 0, 0.33) 100%)",
               borderRadius: 12,

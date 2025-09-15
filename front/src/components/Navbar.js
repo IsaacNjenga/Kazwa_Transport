@@ -94,7 +94,7 @@ function Navbar() {
                 }}
               >
                 <Button
-                  icon={<MenuOutlined />}
+                  icon={<MenuOutlined style={{ color: "#fff" }} />}
                   type="text"
                   onClick={toggleDrawer}
                 />
