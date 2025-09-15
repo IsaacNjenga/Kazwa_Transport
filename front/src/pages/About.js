@@ -1,8 +1,10 @@
 import React from "react";
 import Motion from "../components/Motion";
 import { useUser } from "../contexts/UserContext";
-import { Card, Col, Image, Row, Typography } from "antd";
+import { Card, Col, Image, Row, Statistic, Typography } from "antd";
 import { motion } from "framer-motion";
+import CountUp from "react-countup";
+import { differenceInYears, formatDistanceToNow } from "date-fns";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -21,6 +23,46 @@ const bannerDiv = {
   color: "#fff",
   padding: "0 20px",
 };
+
+const yearsInService = differenceInYears(new Date(), new Date(1998, 0, 1));
+
+const team = [
+  {
+    id: 1,
+    name: "John Doe",
+    title: "CEO & Co-Founder",
+    img: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=900",
+  },
+  {
+    id: 2,
+    name: "Alex Doe",
+    title: "Co-Founder",
+    img: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=900",
+  },
+  {
+    id: 3,
+    name: "John Doe",
+    title: "Head of Sales",
+    img: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=900",
+  },
+];
+
+const formatter = (value) => (
+  <div style={{ margin: "0 auto", textAlign: "center" }}>
+    <Text
+      style={{
+        textAlign: "center",
+        fontFamily: "Roboto",
+        color: "red",
+        fontSize: 40,
+        fontWeight: 700,
+        margin: "0 auto",
+      }}
+    >
+      <CountUp start={0} end={value} separator="," />
+    </Text>
+  </div>
+);
 
 function About() {
   const { isMobile } = useUser();
@@ -72,6 +114,7 @@ function About() {
         </div>
       </div>
 
+      {/* hero */}
       <div>
         <Title
           style={{
@@ -107,6 +150,7 @@ function About() {
         </Paragraph>
       </div>
 
+      {/* background */}
       <div
         style={{
           marginTop: 0,
@@ -185,6 +229,145 @@ function About() {
             </div>
           </div>
         </Card>
+      </div>
+
+      {/* statistics */}
+      <div
+        style={{
+          margin: "40px auto",
+          width: isMobile ? "100%" : "70%",
+          padding: 10,
+        }}
+      >
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12} sm={6}>
+            <Statistic
+              title={
+                <Title
+                  level={isMobile ? 4 : 1}
+                  style={{ fontFamily: "Raleway", textAlign: "center" }}
+                >
+                  Years In Service
+                </Title>
+              }
+              value={yearsInService}
+              formatter={formatter}
+              valueStyle={{ textAlign: "center" }}
+            />
+          </Col>
+          <Col xs={24} md={12} sm={6}>
+            <Statistic
+              title={
+                <Title
+                  level={isMobile ? 4 : 1}
+                  style={{ fontFamily: "Raleway", textAlign: "center" }}
+                >
+                  Clients
+                </Title>
+              }
+              value={100}
+              formatter={formatter}
+              valueStyle={{ textAlign: "center" }}
+            />
+          </Col>
+          <Col xs={24} md={12} sm={6}>
+            <Statistic
+              title={
+                <Title
+                  level={isMobile ? 4 : 1}
+                  style={{ fontFamily: "Raleway", textAlign: "center" }}
+                >
+                  Trucks In Stock
+                </Title>
+              }
+              value={100}
+              formatter={formatter}
+              valueStyle={{ textAlign: "center" }}
+            />
+          </Col>
+          <Col xs={24} md={12} sm={6}>
+            <Statistic
+              title={
+                <Title
+                  level={isMobile ? 4 : 1}
+                  style={{ fontFamily: "Raleway", textAlign: "center" }}
+                >
+                  Staff At Hand
+                </Title>
+              }
+              value={300}
+              formatter={formatter}
+              valueStyle={{ textAlign: "center" }}
+            />
+          </Col>
+        </Row>
+      </div>
+
+      {/* the team */}
+      <div>
+        <Title
+          style={{
+            fontFamily: "Raleway",
+            textAlign: "center",
+            fontWeight: "800",
+          }}
+        >
+          Our Team
+        </Title>
+        <Paragraph
+          type="secondary"
+          style={{
+            fontFamily: "Raleway",
+            textAlign: "center",
+            fontWeight: "800",
+            fontSize:18
+          }}
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+          pellentesque viverra quam in aliquam laoreet quis justo.
+        </Paragraph>
+
+        <div style={{ margin: 10, padding: 20 }}>
+          <Row gutter={[16, 16]}>
+            {team.map((t) => (
+              <Col xs={24} md={8} sm={6} key={t.id}>
+                {" "}
+                <Card
+                  hoverable
+                  style={{
+                    background: "rgba(0,0,0,0)",
+                    maxWidth: 400,
+                    margin: "0 auto",
+                    padding: 0,
+                    width: "100%",
+                    height: "auto",
+                    border: "1px solid rgba(0,0,0,0)",
+                  }}
+                >
+                  <div style={{ textAlign: "center" }}>
+                    <Image
+                      src={t.img}
+                      alt="_img"
+                      preview={false}
+                      height={200}
+                      width={200}
+                      style={{ borderRadius: "50%", objectFit: "cover" }}
+                    />
+                    <Title
+                      level={4}
+                      style={{ fontFamily: "Raleway", fontWeight: 700 }}
+                    >
+                      {t.name}
+                    </Title>
+                    <Text type="secondary" style={{ fontFamily: "Roboto" }}>
+                      {t.title}
+                    </Text>
+                  </div>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </div>
       </div>
     </Motion>
   );
