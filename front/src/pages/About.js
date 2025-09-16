@@ -24,6 +24,7 @@ import {
   PhoneOutlined,
 } from "@ant-design/icons";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -125,7 +126,20 @@ function About() {
     setLoading(true);
     try {
       const allValues = await form.validateFields();
-      console.log(allValues);
+      //console.log(allValues);
+
+      const res = await axios.post(
+        "https://getform.io/f/anlnjkea",
+        {
+          message: allValues.message,
+          email: allValues.email,
+          name: allValues.name,
+        },
+        { headers: { Accept: "application/json" } }
+      );
+
+      //console.log(res);
+
       Swal.fire({
         icon: "success",
         title: "Message sent successfully",
@@ -621,7 +635,7 @@ function About() {
                   <EnvironmentOutlined
                     style={{ marginRight: 8, fontSize: 20 }}
                   />
-                  573-00444, Dubai, UAE
+                  Jable Ali Free Zone (JAFZE), Dubai, UAE
                 </Text>
                 <Text style={{ color: "#ffffff" }}>
                   <PhoneOutlined style={{ marginRight: 8, fontSize: 20 }} />{" "}
@@ -629,7 +643,14 @@ function About() {
                 </Text>
                 <Text style={{ color: "#ffffff" }}>
                   <MailOutlined style={{ marginRight: 8, fontSize: 20 }} />{" "}
-                  info@kazwatransport.com
+                  <a
+                    href="mailto:info@uaeheavytransport.ae"
+                    target="_blank"
+                    rel="noreferrer noopenner"
+                    style={{ color: "#ddd" }}
+                  >
+                    info@uaeheavytransport.ae
+                  </a>{" "}
                 </Text>
               </Space>
               <Space direction="vertical" size="small">
@@ -647,9 +668,8 @@ function About() {
                     color: "#ffffff",
                   }}
                 >
-                  <span>Weekdays: 8:00 AM - 5:00 PM</span>
-                  <span>Saturdays: 10:00 AM - 4:00 PM</span>
-                  <span>Sundays: 10:00 AM - 2:00 PM</span>
+                  <span>Sunday - Thursday: 8:00 AM - 6:00 PM</span>
+                  <span>Friday - Saturday: 9:00 AM - 1:00 PM</span>
                 </div>
               </Space>
             </div>
@@ -691,6 +711,7 @@ function About() {
                       style={inputStyle}
                       value={values.name}
                       onChange={(val) => handleInputChange(val, "name")}
+                      required
                     />
                   </Form.Item>
                   <Form.Item
@@ -702,6 +723,7 @@ function About() {
                       style={inputStyle}
                       value={values.email}
                       onChange={(val) => handleInputChange(val, "email")}
+                      required
                     />
                   </Form.Item>
                   <Form.Item
@@ -713,6 +735,7 @@ function About() {
                       style={{ ...inputStyle, height: 80 }}
                       onChange={(val) => handleInputChange(val, "message")}
                       rows={4}
+                      required
                     />
                   </Form.Item>
                   <Form.Item>

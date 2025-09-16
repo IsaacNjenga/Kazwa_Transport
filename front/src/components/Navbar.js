@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Drawer, Layout, Menu } from "antd";
+import { Button, Drawer, Layout, Menu, Typography } from "antd";
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useUser } from "../contexts/UserContext";
@@ -8,6 +8,7 @@ import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import FooterContent from "./Footer";
 
 const { Header, Content, Footer } = Layout;
+const { Title } = Typography;
 
 const headerStyle = {
   position: "fixed",
@@ -15,7 +16,7 @@ const headerStyle = {
   left: 0,
   zIndex: 1000,
   width: "100%",
-  padding: "10px 24px",
+  padding: "2px 24px",
   display: "flex",
   alignItems: "center",
   transition: "all 0.9s ease",
@@ -74,7 +75,10 @@ function Navbar() {
                 alignItems: "center",
               }}
             >
-              <img
+              <Title style={{ margin: 0, padding: 0, color: "#fff" }}>
+                Logo
+              </Title>
+              {/* <img
                 src={logo}
                 alt="logo"
                 style={{
@@ -82,7 +86,7 @@ function Navbar() {
                   width: isMobile ? 70 : 120,
                   height: isMobile ? 70 : 120,
                 }}
-              />
+              /> */}
             </Link>
 
             {isMobile ? (

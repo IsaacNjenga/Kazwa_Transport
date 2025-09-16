@@ -78,7 +78,7 @@ function FooterContent() {
                   <EnvironmentOutlined
                     style={{ marginRight: 8, fontSize: 20 }}
                   />
-                  Dubai, UAE
+                  Jable Ali Free Zone (JAFZE), Dubai, UAE
                 </Text>
                 <Text style={{ color: "#ddd" }}>
                   <PhoneOutlined style={{ marginRight: 8, fontSize: 20 }} />{" "}
@@ -86,7 +86,14 @@ function FooterContent() {
                 </Text>
                 <Text style={{ color: "#ddd" }}>
                   <MailOutlined style={{ marginRight: 8, fontSize: 20 }} />{" "}
-                  info@kazwatransport.com
+                  <a
+                    href="mailto:info@uaeheavytransport.ae"
+                    target="_blank"
+                    rel="noreferrer noopenner"
+                    style={{ color: "#ddd" }}
+                  >
+                    info@uaeheavytransport.ae
+                  </a>
                 </Text>
               </Space>
 
