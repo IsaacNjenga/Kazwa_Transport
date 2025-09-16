@@ -199,7 +199,19 @@ function About() {
               >
                 ABOUT US
               </Title>
-            </motion.div>
+            </motion.div>{" "}
+            <Text
+              style={{
+                marginTop: 0,
+                color: "#fff",
+                fontFamily: "Raleway",
+                fontWeight: 400,
+                textAlign: "left",
+                fontSize: isMobile ? 18 : 28,
+              }}
+            >
+              Driven by Trust, Powered by Experience
+            </Text>
           </div>
         </div>
       </div>

@@ -121,6 +121,18 @@ function Services() {
                 SERVICES
               </Title>
             </motion.div>
+            <Text
+              style={{
+                marginTop: 0,
+                color: "#fff",
+                fontFamily: "Raleway",
+                fontWeight: 400,
+                textAlign: "left",
+                fontSize: isMobile ? 18 : 28,
+              }}
+            >
+              Let's Move Your Business Forward
+            </Text>
           </div>
         </div>
       </div>
@@ -191,7 +203,7 @@ function Services() {
                     boxShadow: "0 8px 16px rgba(0,0,0,0.15)",
                   }}
                 >
-                  <p style={{ textAlign: "center" ,margin:0}}>{card.icon}</p>
+                  <p style={{ textAlign: "center", margin: 0 }}>{card.icon}</p>
                   <div
                     style={{
                       display: "flex",
@@ -261,7 +273,7 @@ function Services() {
       <div
         style={{
           background:
-            "linear-gradient(to left, rgba(0,0,0,0.14) 5%, rgba(255,255,255,0.1) 33.33%, rgba(0,0,0,0.15) 66.67%, rgba(0,0,0,0.04) 100%)",
+            "linear-gradient(to left, rgba(36, 78, 231, 0.14) 5%, rgba(153, 158, 229, 0.1) 33.33%, rgba(22, 101, 247, 0.15) 66.67%, rgba(8, 35, 237, 0.04) 100%)",
         }}
       >
         <div
