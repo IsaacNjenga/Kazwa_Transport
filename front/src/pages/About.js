@@ -128,7 +128,7 @@ function About() {
       const allValues = await form.validateFields();
       //console.log(allValues);
 
-      const res = await axios.post(
+      await axios.post(
         "https://getform.io/f/anlnjkea",
         {
           message: allValues.message,

@@ -2,10 +2,16 @@ import {
   AppstoreOutlined,
   BankFilled,
   BankOutlined,
+  CalendarFilled,
+  CarFilled,
+  ContainerFilled,
+  EnvironmentFilled,
   HomeFilled,
   InfoCircleOutlined,
   ProductFilled,
   ShoppingCartOutlined,
+  ToolFilled,
+  TruckFilled,
 } from "@ant-design/icons";
 
 const iconStyle = {
@@ -42,6 +48,63 @@ export const servicesCard = [
     icon: <HomeFilled style={iconStyle} />,
     title: "Other Businesses We Serve",
     text: "Customized transportation solutions for various industries including manufacturing, retail and more.",
+  },
+];
+
+export const servicesData = [
+  {
+    id: 1,
+    icon: <BankFilled style={iconStyle} />,
+    title: "Construction Transport",
+    text: "Specialized transportation for construction equipment, machinery, and materials to any site across the UAE.",
+  },
+  {
+    id: 2,
+    icon: <ShoppingCartOutlined style={iconStyle} />,
+    title: "Commercial Goods Transport",
+    text: "Secure and timely transportation of commercial goods, ensuring your products reach their destination safely.",
+  },
+  {
+    id: 3,
+    icon: <ProductFilled style={iconStyle} />,
+    title: "Logistics Companies Transport (JAFZA)",
+    text: "Reliable solutions tailored for logistics companies and free zone operations, meeting all compliance requirements.",
+  },
+  {
+    id: 4,
+    icon: <ContainerFilled style={iconStyle} />,
+    title: "Container Haulage",
+    text: "Port-to-warehouse container transport for imports and exports, including refrigerated and dry containers.",
+  },
+  {
+    id: 5,
+    icon: <TruckFilled style={iconStyle} />,
+    title: "Long-Distance Haulage",
+    text: "Efficient cross-emirate transport services for bulk cargo, raw materials, and heavy freight.",
+  },
+  {
+    id: 6,
+    icon: <EnvironmentFilled style={iconStyle} />,
+    title: "Site Relocation",
+    text: "Complete site relocation services including dismantling, transport, and setup of heavy equipment.",
+  },
+  {
+    id: 7,
+    icon: <CalendarFilled style={iconStyle} />,
+    title: "Scheduled Delivery",
+    text: "Fixed-schedule transport services for recurring deliveries and supply chain management.",
+  },
+  {
+    id: 8,
+    icon: <ToolFilled style={iconStyle} />,
+    title: "Heavy Equipment Rental",
+    text: "Rental of trucks, trailers, and lifting equipment with experienced operators for short-term projects.",
+  },
+  {
+    id: 9,
+    icon: <CarFilled style={iconStyle} />,
+    title: "Vehicle Recovery & Towing",
+    text: "Professional towing and recovery services for heavy vehicles, trucks, and machinery breakdowns.",
   },
 ];
 

@@ -3,7 +3,7 @@ import { Button, Drawer, Layout, Menu, Typography } from "antd";
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useUser } from "../contexts/UserContext";
-import logo from "../assets/icons/logo.png";
+//import logo from "../assets/icons/logo.png";
 import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import FooterContent from "./Footer";
 
@@ -23,15 +23,16 @@ const headerStyle = {
   transform: "translateY(0)",
   height: "auto",
 };
-const logoStyle = {
-  borderRadius: "50%",
-  border: "2px solid #fff",
-  objectFit: "cover",
-  transition: "all 0.3s ease",
-  cursor: "pointer",
-  margin: "3px 0",
-  padding: 4,
-};
+
+// const logoStyle = {
+//   borderRadius: "50%",
+//   border: "2px solid #fff",
+//   objectFit: "cover",
+//   transition: "all 0.3s ease",
+//   cursor: "pointer",
+//   margin: "3px 0",
+//   padding: 4,
+// };
 
 const headerDivStyle = {
   display: "flex",
