@@ -4,10 +4,12 @@ import {
   PhoneOutlined,
   EnvironmentOutlined,
   CalendarOutlined,
+  MailOutlined,
 } from "@ant-design/icons";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { format } from "date-fns";
+import axios from "axios";
 
 function ServiceModal({ serviceName, loading, setOpenModal, openModal }) {
   const [form] = Form.useForm();
@@ -25,7 +27,20 @@ function ServiceModal({ serviceName, loading, setOpenModal, openModal }) {
           "yyyy-MM-dd"
         ),
       };
-      console.log(allValues);
+
+      await axios.post(
+        "https://getform.io/f/anlnjkea",
+        {
+          full_name: allValues.full_name,
+          email: allValues.email,
+          phone_number: allValues.phone_number,
+          service: allValues.service,
+          service_date: allValues.service_date,
+          pickup_location: allValues.pickup_location,
+          dropoff_location: allValues.dropoff_location,
+        },
+        { headers: { Accept: "application/json" } }
+      );
 
       Swal.fire({
         icon: "success",
@@ -50,7 +65,14 @@ function ServiceModal({ serviceName, loading, setOpenModal, openModal }) {
   return (
     <Modal
       title={
-        <span style={{ fontFamily: "Raleway", fontSize: 24, padding: 0, fontWeight: 600 }}>
+        <span
+          style={{
+            fontFamily: "Raleway",
+            fontSize: 24,
+            padding: 0,
+            fontWeight: 600,
+          }}
+        >
           {serviceName}
         </span>
       }
@@ -80,7 +102,15 @@ function ServiceModal({ serviceName, loading, setOpenModal, openModal }) {
         >
           <Input prefix={<UserOutlined />} placeholder="John Doe" />
         </Form.Item>
-
+        <Form.Item
+          label="Email Address"
+          name="email"
+          rules={[
+            { required: true, message: "Please enter your email address" },
+          ]}
+        >
+          <Input prefix={<MailOutlined />} placeholder="JohnDoe@email.com" />
+        </Form.Item>
         <Form.Item
           label="Phone Number"
           name="phone_number"
@@ -99,7 +129,12 @@ function ServiceModal({ serviceName, loading, setOpenModal, openModal }) {
           <DatePicker
             prefix={<CalendarOutlined />}
             style={{ width: "100%" }}
-            disabledDate={(d) => d && d < new Date()}
+            //disabledDate={(d) => d && d < new Date()}
+            disabledDate={(d) => {
+              const today = new Date();
+              today.setHours(0, 0, 0, 0);
+              return d && d < today;
+            }}
           />
         </Form.Item>
 
