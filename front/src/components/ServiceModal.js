@@ -50,7 +50,7 @@ function ServiceModal({ serviceName, loading, setOpenModal, openModal }) {
   return (
     <Modal
       title={
-        <span style={{ fontFamily: "Raleway", fontSize: 24, padding: "0 8px" }}>
+        <span style={{ fontFamily: "Raleway", fontSize: 24, padding: 0, fontWeight: 600 }}>
           {serviceName}
         </span>
       }

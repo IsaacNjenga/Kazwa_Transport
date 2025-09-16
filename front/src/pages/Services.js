@@ -191,7 +191,7 @@ function Services() {
                     boxShadow: "0 8px 16px rgba(0,0,0,0.15)",
                   }}
                 >
-                  <p style={{ textAlign: "center" }}>{card.icon}</p>
+                  <p style={{ textAlign: "center" ,margin:0}}>{card.icon}</p>
                   <div
                     style={{
                       display: "flex",
