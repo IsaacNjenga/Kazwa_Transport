@@ -76,8 +76,17 @@ function Navbar() {
                 alignItems: "center",
               }}
             >
-              <Title style={{ margin: 0, padding: 0, color: "#fff" }}>
-                Logo
+              <Title
+                style={{
+                  margin: 0,
+                  padding: 0,
+                  color: "#fff",
+                  fontFamily: "Raleway",
+                  fontSize: isMobile ? 20 : 30,
+                  fontWeight: 700,
+                }}
+              >
+                Kazwa Transport
               </Title>
               {/* <img
                 src={logo}

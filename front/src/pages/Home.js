@@ -259,7 +259,7 @@ function Home() {
                     </Text>
                   </div>
                   <div style={{ position: "absolute", bottom: 0 }}>
-                    <Link to="/quotation">
+                    <Link to="/services">
                       <p
                         style={{
                           fontWeight: "bold",

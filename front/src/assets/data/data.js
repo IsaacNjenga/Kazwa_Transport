@@ -2,7 +2,6 @@ import {
   AppstoreOutlined,
   BankFilled,
   BankOutlined,
-  CalendarFilled,
   CarFilled,
   ContainerFilled,
   EnvironmentFilled,
@@ -56,7 +55,7 @@ export const servicesData = [
     id: 1,
     icon: <BankFilled style={iconStyle} />,
     title: "Construction Transport",
-    text: "Specialized transportation for construction equipment, machinery, and materials to any site across the UAE.",
+    text: "Specialized transportation for construction equipment, machinery, and materials to your site.",
   },
   {
     id: 2,
@@ -90,18 +89,12 @@ export const servicesData = [
   },
   {
     id: 7,
-    icon: <CalendarFilled style={iconStyle} />,
-    title: "Scheduled Delivery",
-    text: "Fixed-schedule transport services for recurring deliveries and supply chain management.",
-  },
-  {
-    id: 8,
     icon: <ToolFilled style={iconStyle} />,
     title: "Heavy Equipment Rental",
     text: "Rental of trucks, trailers, and lifting equipment with experienced operators for short-term projects.",
   },
   {
-    id: 9,
+    id: 8,
     icon: <CarFilled style={iconStyle} />,
     title: "Vehicle Recovery & Towing",
     text: "Professional towing and recovery services for heavy vehicles, trucks, and machinery breakdowns.",

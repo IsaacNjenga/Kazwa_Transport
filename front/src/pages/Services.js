@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Motion from "../components/Motion";
 import { motion } from "framer-motion";
 import { useUser } from "../contexts/UserContext";
-import { Card, Col, Image, Row, Typography } from "antd";
+import { Button, Card, Col, Image, Row, Typography } from "antd";
 import { servicesData } from "../assets/data/data";
-import { Link } from "react-router-dom";
 import {
   CheckCircleFilled,
   MailOutlined,
@@ -14,6 +13,7 @@ import {
 import SplitText from "../components/SplitText";
 import ReactDOMServer from "react-dom/server";
 import Swal from "sweetalert2";
+import ServiceModal from "../components/ServiceModal";
 
 const { Paragraph, Title, Text } = Typography;
 
@@ -67,6 +67,16 @@ const cardStyle = {
 
 function Services() {
   const { isMobile } = useUser();
+  const [service, setService] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const viewModal = (title) => {
+    setLoading(true);
+    setService(title);
+    setOpenModal(true);
+    setLoading(false);
+  };
 
   return (
     <Motion>
@@ -185,7 +195,7 @@ function Services() {
                   <div
                     style={{
                       display: "flex",
-                      height: 70,
+                      height: 75,
                     }}
                   >
                     <Title
@@ -216,23 +226,29 @@ function Services() {
                       {card.text}
                     </Text>
                   </div>
-                  <div style={{ position: "absolute", bottom: 0 }}>
-                    <Link to="/quotation">
-                      <p
+                  <div>
+                    <Button
+                      type="primary"
+                      style={{
+                        transition: "all 0.3s ease",
+                      }}
+                      onMouseEnter={(e) =>
+                        (e.currentTarget.style.transform = "scale(1.05)")
+                      }
+                      onMouseLeave={(e) =>
+                        (e.currentTarget.style.transform = "scale(1)")
+                      }
+                      onClick={() => viewModal(card.title)}
+                    >
+                      <Text
                         style={{
                           fontWeight: "bold",
-                          transition: "all 0.3s ease",
+                          color: "#fff",
                         }}
-                        onMouseEnter={(e) =>
-                          (e.currentTarget.style.transform = "scale(1.05)")
-                        }
-                        onMouseLeave={(e) =>
-                          (e.currentTarget.style.transform = "scale(1)")
-                        }
                       >
-                        Request Service →
-                      </p>
-                    </Link>
+                        Request Service
+                      </Text>
+                    </Button>
                   </div>
                 </Card>
               </Col>
@@ -407,6 +423,13 @@ function Services() {
           </Text>
         </div>
       </div>
+
+      <ServiceModal
+        serviceName={service}
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        loading={loading}
+      />
     </Motion>
   );
 }
