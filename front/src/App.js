@@ -15,15 +15,16 @@ function App() {
     <UserProvider>
       <ScrollToTop />
       <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Navbar />}>
-            <Route index element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about-us" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/quotation" element={<Quotation />} />
-          </Route>
-        </Routes>
+    App
+        // <Routes location={location} key={location.pathname}>
+        //   <Route path="/" element={<Navbar />}>
+        //     <Route index element={<Home />} />
+        //     <Route path="/contact" element={<Contact />} />
+        //     <Route path="/about-us" element={<About />} />
+        //     <Route path="/services" element={<Services />} />
+        //     <Route path="/quotation" element={<Quotation />} />
+        //   </Route>
+        // </Routes>
       </AnimatePresence>
     </UserProvider>
   );
